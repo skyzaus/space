@@ -1,5 +1,6 @@
 {
-  "name": "space",
+  "homepage": "http://skyzaus.github.io/space",
+  "name": "skyzaus",
   "private": true,
   "version": "0.0.0",
   "type": "module",
