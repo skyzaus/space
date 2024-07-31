@@ -12,7 +12,6 @@ function Spacecrafts ()
 
   async function getSpacecrafts ()
   {
-    // todo get spacecrafts using the API
     const {data: spacecrafts, isError} = await SpaceTravelApi.getSpacecrafts();
     if (!isError)
     {
@@ -38,8 +37,7 @@ function Spacecrafts ()
 
   function handleClickOfBuild ()
   {
-    // todo navigate to build spacecraft page
-    navigate('/build-spacecraft');
+    navigate("/spacecraft/build");
   }
 
   function handleClickOfImageContainer (event, id)
@@ -59,9 +57,7 @@ function Spacecrafts ()
   }
 
   return (
-  
     <div>
-        <p>==== Spacecrafts page ====</p>
       <button onClick={handleClickOfBuild}>
         🏗 Build a Spacecraft
       </button>
