@@ -1,74 +1,229 @@
 *,
 *::before,
-*::after
-{
+*::after {
   box-sizing: inherit;
 }
 
-html
-{
+html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
 
-body
-{
+body {
   font-family: sans-serif;
   width: 100vw;
   min-height: 100vh;
-  color: #ffffff;
-  background-color: #000000;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-button
-{
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  background-color: transparent;
-}
-
-button:hover
-{
-  border-color: #6cd265;
-}
-
-input,
-textarea
-{
-  font-size: 1.2rem;
-  width: 100%;
-  padding: 0.5rem;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  outline: none;
-  background-color: transparent;
-}
-
-textarea
-{
-  min-height: 12rem;
-}
-
-textarea:hover,
-input:hover
-{
-  border-color: #6cd265;
-}
-
+/* Theme variables */
 body.light {
   --background-color: white;
   --text-color: black;
+  --border-color: black;
+  --hover-border-color: #6cd265;
+  --error-color: #ce3d3d;
 }
 
 body.dark {
   --background-color: black;
   --text-color: white;
+  --border-color: white;
+  --hover-border-color: #6cd265;
+  --error-color: #ce3d3d;
 }
 
+/* Apply theme variables */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+}
+
+button,
+input,
+textarea {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  background-color: transparent;
+}
+
+button:hover,
+textarea:hover,
+input:hover {
+  border-color: var(--hover-border-color);
+}
+
+textarea {
+  min-height: 12rem;
+}
+
+.DMSwitch {
+  color: blue;
+}
+
+button {
+  color: blue;
+}
+
+/* Spacecraft styles */
+.spacecraft {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+}
+
+.spacecraft__imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  margin-bottom: 6rem;
+  cursor: pointer;
+  border: 2px dotted var(--border-color);
+}
+
+.spacecraft__imageContainer:hover {
+  border-color: var(--hover-border-color);
+}
+
+.spacecraft__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spacecraft__image--default {
+  font-size: 4.8rem;
+}
+
+.spacecraft__infoContainer {
+  display: flex;
+  width: 100%;
+}
+
+.spacecraft__info {
+  font-size: 1.2rem;
+  width: 50%;
+}
+
+.spacecraft__infoHeader {
+  margin-bottom: 2rem;
+}
+
+.spacecraft__infoText {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+/* Form styles */
+.form__inputs {
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+.form__inputContainer:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.submitContainer {
+  display: flex;
+}
+
+.errorContainer {
+  flex-grow: 1;
+}
+
+.error {
+  color: var(--error-color);
+  margin-bottom: 2rem;
+}
+
+/* Planets and spacecraft styles */
+.planetWithSpacecrafts,
+.planet,
+.planet__spacecrafts,
+.planet__spacecraft__imageContainer {
+  display: flex;
+}
+
+.planetWithSpacecrafts,
+.planet {
+  border: 2px dotted var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.planet,
+.planet__spacecraft {
+  padding: 1rem;
+}
+
+.planet {
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.planet--selected,
+.planet__spacecraft--selected .planet__spacecraft__imageContainer {
+  border-color: var(--error-color);
+}
+
+.planet:not(.planet--selected):hover,
+.planet__spacecraft:not(.planet__spacecraft--selected)
+  .planet__spacecraft__imageContainer:hover {
+  border-color: var(--hover-border-color);
+}
+
+.planet__imageContainer,
+.planet__spacecraft__imageContainer {
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 1rem;
+}
+
+.planet__image,
+.planet__spacecraft__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.planet__image {
+  object-fit: contain;
+}
+
+.planet__spacecraft__image {
+  object-fit: cover;
+}
+
+.planet__info,
+.planet__spacecraft__info {
+  font-size: 1rem;
+}
+
+.planet__spacecrafts {
+  flex-wrap: wrap;
+}
+
+.planet__spacecraft {
+  padding-right: 0;
+}
+
+.planet__spacecraft__imageContainer {
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  cursor: grab;
+}
+
+.planet__spacecraft__image--default {
+  font-size: 2.4rem;
 }
