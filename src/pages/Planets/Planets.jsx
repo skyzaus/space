@@ -10,15 +10,15 @@ function Planets() {
   const { isLoading, enableLoading, disableLoading } = useContext(LoadingContext);
 
   async function getPlanetsWithSpacecrafts() {
-    // Fetching planets and spacecrafts data from the API
+    
     const { data: planets, isError: isErrorPlanets } =
       await SpaceTravelApi.getPlanets();
     const { data: spacecrafts, isError: isErrorSpacecrafts } =
       await SpaceTravelApi.getSpacecrafts();
 
-    // Checking for no errors in the fetched data
+    
     if (!isErrorPlanets && !isErrorSpacecrafts) {
-      // Associating spacecrafts with their current planet based on location
+     
       for (const planet of planets) {
         planet.spacecrafts = [];
 
@@ -29,7 +29,7 @@ function Planets() {
         }
       }
 
-      // Updating the state with the fetched and processed planets data
+     
       setPlanetsWithSpacecrafts(planets);
     }
   }
